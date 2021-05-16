@@ -1,9 +1,10 @@
 # phoebus-archiver for Docker
 
-An effort to packages the Phoebus Archiver for EPICS (earlier names:
-CSS RDB Archiver or Beauty) for use with Docker.
+Container images for the Phoebus Archiver for EPICS
+(a.k.a. CSS RDB Archiver or BEAUTY).
 
-The Images are built from source for multiple architectures.
+The images are building the Phoebus archive-service from source
+code to provide images for multiple CPU architectures.
 
 ### Resources
 
