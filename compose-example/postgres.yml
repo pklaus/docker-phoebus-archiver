@@ -42,7 +42,7 @@ services:
     image: postgres:13.3
     #restart: unless-stopped
     volumes:
-      - ./postgres_schema.sql:/docker-entrypoint-initdb.d/postgres_schema.sql:ro
+      - ./postgres.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
       - db-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
