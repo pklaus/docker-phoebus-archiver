@@ -25,4 +25,5 @@ COPY --from=builder /phoebus-src/services/archive-engine/target /phoebus-archive
 WORKDIR /phoebus-archive-engine
 # assert that all dependencies can be resolved:
 RUN jdeps --class-path './lib/*' --recursive service-archive-engine-4.6.6-SNAPSHOT.jar | (! grep 'not found')
-CMD java -jar ./service-archive-engine-4.6.6-SNAPSHOT.jar -help
+ENTRYPOINT ["java", "-jar", "./service-archive-engine-4.6.6-SNAPSHOT.jar"]
+CMD ["-help"]
