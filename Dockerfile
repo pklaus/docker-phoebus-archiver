@@ -15,7 +15,9 @@ RUN mvn clean verify -f dependencies/pom.xml
 # Instead of compiling all phoebus modules using:
 #RUN mvn -DskipTests clean install
 # we only compile the service-archive-engine and its dependencies:
-RUN mvn -DskipTests --projects :service-archive-engine --also-make clean install
+#RUN mvn -DskipTests --projects :service-archive-engine --also-make clean install
+# Builds intended for the public probably shouldn't skip the (slow) tests:
+RUN mvn --projects :service-archive-engine --also-make clean install
 
 # -------------------------------------
 FROM openjdk:11-buster as final
