@@ -7,7 +7,7 @@ services:
 
   configure-db-oneshot:
     container_name: phoebus-archiver-configure-db-oneshot
-    image: docker.io/pklaus/phoebus-archiver:app-e69a776
+    image: docker.io/pklaus/phoebus-archiver:e69a776
     volumes:
       - ./settings.ini:/settings.ini:ro
       - ./Example.xml:/Example.xml:ro
@@ -19,7 +19,7 @@ services:
 
   app:
     container_name: phoebus-archiver-app
-    image: docker.io/pklaus/phoebus-archiver:app-e69a776
+    image: docker.io/pklaus/phoebus-archiver:e69a776
     #restart: unless-stopped
     ports:
       - "4812:4812"
@@ -39,9 +39,10 @@ services:
 
   db:
     container_name: phoebus-archiver-db
-    image: docker.io/pklaus/phoebus-archiver:db-e69a776
+    image: postgres:13.3
     #restart: unless-stopped
     volumes:
+      - ./postgres_schema.sql:/docker-entrypoint-initdb.d/postgres_schema.sql:ro
       - db-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"

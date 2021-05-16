@@ -244,3 +244,30 @@ SELECT channel.name AS channel,
    ORDER BY smpl_time
    LIMIT 50;
    
+-- Create 'archive' user who can remotely access the 'archive' tables,
+-- but only change the table layout locally
+--
+-- Assume you are connected as the 'postgres' super user
+
+CREATE USER archive WITH PASSWORD '$archive';
+ALTER USER archive WITH PASSWORD '$archive';
+
+CREATE USER report WITH PASSWORD '$report';
+
+SELECT * FROM pg_user;
+
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+  ON smpl_eng, retent, smpl_mode, chan_grp, channel, status, severity, sample, array_val, num_metadata, enum_metadata 
+  TO archive;
+
+GRANT SELECT
+  ON smpl_eng, retent, smpl_mode, chan_grp, channel, status, severity, sample, array_val, num_metadata, enum_metadata 
+  TO report;
+
+-- Might have to check with \d which sequences were
+-- created by Postgres to handle the SERIAL columns:
+GRANT USAGE ON SEQUENCE
+  chan_grp_grpid_seq, channel_chid, retent_retentid_seq,
+  severity_sevid, smpl_eng_engid_seq, status_statid 
+  TO archive;
