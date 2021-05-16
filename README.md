@@ -6,6 +6,11 @@ Container images for the Phoebus Archiver for EPICS
 The images are building the Phoebus archive-service from source
 code to provide images for multiple CPU architectures.
 
+### Example Usage
+
+An example on how to use the container with `docker-compose`
+can be found in [./compose-example](./compose-example).
+
 ### Resources
 
 * Source code:
