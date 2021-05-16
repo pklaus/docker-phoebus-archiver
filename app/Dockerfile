@@ -23,6 +23,7 @@ ARG GIT_COMMIT=master
 LABEL git_commit=$GIT_COMMIT
 COPY --from=builder /phoebus-src/services/archive-engine/target /phoebus-archive-engine
 WORKDIR /phoebus-archive-engine
+COPY engineconfig.dtd .
 # assert that all dependencies can be resolved:
 RUN jdeps --class-path './lib/*' --recursive service-archive-engine-4.6.6-SNAPSHOT.jar | (! grep 'not found')
 ENTRYPOINT ["java", "-jar", "./service-archive-engine-4.6.6-SNAPSHOT.jar"]

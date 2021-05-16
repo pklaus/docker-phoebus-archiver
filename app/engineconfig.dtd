@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DTD for the ArchiveEngine Configuration         -->
+<!-- Note that we do not allow empty configurations: -->
+<!-- Each config. must contain at least one group,   -->
+<!-- and each group must contain at least 1 channel. -->
+<!ELEMENT engineconfig ((write_period|get_threshold|
+                         file_size|ignored_future|
+                         buffer_reserve|
+                         max_repeat_count|disconnect)*,
+                         group*)>
+<!ELEMENT group (name,channel*)>
+<!ELEMENT channel (name,period,(scan|monitor),disable?)>
+<!ELEMENT write_period (#PCDATA)><!-- int seconds -->
+<!ELEMENT get_threshold (#PCDATA)><!-- int seconds -->
+<!ELEMENT file_size (#PCDATA)><!-- MB -->
+<!ELEMENT ignored_future (#PCDATA)><!-- double hours -->
+<!ELEMENT buffer_reserve (#PCDATA)><!-- int times -->
+<!ELEMENT max_repeat_count (#PCDATA)><!-- int times -->
+<!ELEMENT disconnect EMPTY>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT period (#PCDATA)><!-- double seconds -->
+<!ELEMENT scan EMPTY>
+<!ELEMENT monitor EMPTY>
+<!ELEMENT disable EMPTY>
