@@ -3,8 +3,9 @@
 Container images for the Phoebus Archiver for EPICS
 (a.k.a. CSS RDB Archiver or BEAUTY).
 
-The images are building the Phoebus archive-service from source
-code to provide images for multiple CPU architectures.
+In the build process of the container images, the Phoebus
+archive-service is built from source allowing to provide
+images for multiple CPU architectures.
 
 ### Example Usage
 
