@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE engineconfig SYSTEM "./engineconfig.dtd">
+<engineconfig>
+  <group>
+    <name>Example Group 1</name>
+      <channel><name>scs:circle:tick</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:circle:angle</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:line:a</name>		<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:circle:x</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:circle:y</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:calcExample</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:calcExample1</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:calc1</name>		<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:calcExample2</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:calc2</name>		<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:calcExample3</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:calc3</name>		<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:line:b</name>		<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:aiExample</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:aiExample1</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:ai1</name>		<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:aiExample2</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:ai2</name>		<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:aiExample3</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:ai3</name>		<period>00:00:01</period><monitor/></channel>
+  </group>
+  <group>
+    <name>Example Group 2</name>
+      <channel><name>scs:xxxExample     </name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:compressExample</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:EXAMPLE:version</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:aSubExample</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:subExample</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:circle:step</name>	<period>00:00:01</period><monitor/></channel>
+      <channel><name>scs:circle:period</name>	<period>00:00:01</period><monitor/></channel>
+  </group>
+</engineconfig>
