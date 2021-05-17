@@ -1,0 +1,71 @@
+
+version: "3.9"
+
+x-disabled:
+
+services:
+
+  configure-db-oneshot:
+    container_name: phoebus-archiver-configure-db-oneshot
+    image: docker.io/pklaus/phoebus-archiver:e69a776
+    volumes:
+      - ./mariadb.ini:/settings.ini:ro
+      - ./Example.xml:/Example.xml:ro
+    links:
+      - db
+    networks:
+      - phoebus-archiver
+    command: -engine Example -import /Example.xml -port 4812 -replace_engine -settings /settings.ini
+
+  app:
+    container_name: phoebus-archiver-app
+    image: docker.io/pklaus/phoebus-archiver:e69a776
+    #restart: unless-stopped
+    ports:
+      - "4812:4812"
+    links:
+      - db
+      - example-ioc
+    depends_on:
+      - db
+    volumes:
+      - ./mariadb.ini:/settings.ini:ro
+    stdin_open: true
+    tty: true
+    #command: "-help"
+    networks:
+      - phoebus-archiver
+    command: -engine Example -port 4812 -settings /settings.ini
+
+  db:
+    container_name: phoebus-archiver-db
+    image: mariadb:10.6-focal
+    #restart: unless-stopped
+    volumes:
+      - ./mariadb.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+      - db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - phoebus-archiver
+    environment:
+      MARIADB_ROOT_PASSWORD: 2kCKpSJcwAXhP1IG
+
+  example-ioc:
+    container_name: phoebus-archiver-example-ioc
+    image: pklaus/epics_base:7.0.4_debian
+    stdin_open: true
+    tty: true
+    working_dir: /epics/iocs/example/iocBoot/iocEXAMPLE
+    expose:
+      - "5064-5065/udp"
+      - "5064-5065"
+    networks:
+      - phoebus-archiver
+    restart: unless-stopped
+    command: ./st.cmd
+
+volumes:
+  db-data:
+networks:
+  phoebus-archiver:
