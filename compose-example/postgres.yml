@@ -9,7 +9,7 @@ services:
     container_name: phoebus-archiver-configure-db-oneshot
     image: docker.io/pklaus/phoebus-archiver:e69a776
     volumes:
-      - ./settings.ini:/settings.ini:ro
+      - ./postgres.ini:/settings.ini:ro
       - ./Example.xml:/Example.xml:ro
     links:
       - db
@@ -29,7 +29,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./settings.ini:/settings.ini:ro
+      - ./postgres.ini:/settings.ini:ro
     stdin_open: true
     tty: true
     #command: "-help"

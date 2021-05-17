@@ -28,7 +28,7 @@ You should now be able to visit <http://localhost:4812/main> with
 your browser.
 
 ```
-# You may now edit `docker-compose.postgres.yml` and move the service
+# You may now edit `postgres.yml` and move the service
 # 'phoebus-archiver-configure-db-oneshot' to the section `x-disabled:`.
 # From then on, you can use
 docker-compose -f postgres.yml down
